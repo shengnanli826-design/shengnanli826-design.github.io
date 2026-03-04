@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+  <title>评水相逢 · 盛京评韵伴旅行（视频版）</title>
+  <!-- Font Awesome 6 图标库 -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', '微软雅黑', 'PingFang SC', 'Noto Sans', system-ui, sans-serif;
+    }
+
+    body {
+      background: #fef7e9;
+      color: #2e241f;
+      line-height: 1.5;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 1.5rem 1.2rem;
+    }
+
+    /* 标题区域 */
+    .hero {
+      text-align: center;
+      margin-bottom: 2.5rem;
+      position: relative;
+      padding: 1.2rem 0;
+    }
+    .hero:after {
+      content: "🎭";
+      font-size: 2.5rem;
+      opacity: 0.2;
+      position: absolute;
+      bottom: -10px;
+      right: 10px;
+      transform: rotate(10deg);
+    }
+    .hero h1 {
+      font-size: 2.4rem;
+      font-weight: 700;
+      letter-spacing: 2px;
+      color: #9e2a2b;
+      text-shadow: 2px 2px 0 #f3d9b1;
+      margin-bottom: 0.25rem;
+    }
+    .hero h2 {
+      font-size: 1.5rem;
+      font-weight: 400;
+      color: #5c3e2f;
+      border-top: 2px solid #d4a373;
+      border-bottom: 2px solid #d4a373;
+      display: inline-block;
+      padding: 0.4rem 1.5rem;
+      margin-top: 0.25rem;
+      background: #fff4e2;
+      border-radius: 40px;
+    }
+    .subhead {
+      font-size: 1.2rem;
+      color: #7f4f3a;
+      margin: 0.8rem 0 0.2rem;
+      font-style: italic;
+    }
+
+    /* 卡片通用设计 */
+    .section-title {
+      font-size: 2rem;
+      margin: 2.5rem 0 1.2rem;
+      padding-left: 0.8rem;
+      border-left: 8px solid #b23b3b;
+      color: #3d2b1b;
+      font-weight: 600;
+    }
+    .section-title i {
+      margin-right: 0.6rem;
+      color: #b23b3b;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.8rem;
+      margin: 1.5rem 0;
+    }
+
+    .card {
+      background: #fffdf9;
+      border-radius: 28px 12px 28px 12px;
+      box-shadow: 0 10px 25px rgba(150, 60, 30, 0.12);
+      padding: 1.2rem 1rem 1.5rem 1rem;
+      transition: all 0.2s ease;
+      border: 1px solid #edd4b5;
+      display: flex;
+      flex-direction: column;
+    }
+    .card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 18px 30px rgba(160, 60, 30, 0.2);
+      border-color: #c1793b;
+    }
+
+    /* 视频播放器包裹 */
+    .video-wrapper {
+      width: 100%;
+      margin-bottom: 1rem;
+      border-radius: 24px 8px 24px 8px;
+      overflow: hidden;
+      background: #2b1b10;
+      aspect-ratio: 16 / 9;  /* 保持比例 */
+    }
+    .video-wrapper iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+      display: block;
+    }
+
+    /* 流派标签 */
+    .liupai-badge {
+      display: inline-block;
+      background: #b57c48;
+      color: white;
+      font-size: 0.8rem;
+      padding: 0.2rem 0.8rem;
+      border-radius: 20px;
+      margin-right: 0.5rem;
+      margin-bottom: 0.6rem;
+    }
+
+    /* 文创/体验小标签 */
+    .feature-icon {
+      font-size: 2.2rem;
+      color: #bc6c25;
+      margin-bottom: 0.5rem;
+    }
+
+    hr.divider {
+      border: none;
+      height: 4px;
+      background: linear-gradient(90deg, transparent, #d4a373, #b23b3b, #d4a373, transparent);
+      margin: 2rem 0;
+    }
+
+    footer {
+      text-align: center;
+      padding: 2rem 0 0.5rem;
+      color: #5b4a3b;
+      font-size: 0.9rem;
+      border-top: 2px solid #d4a373;
+      margin-top: 2rem;
+    }
+
+    /* 响应式微调 */
+    @media (max-width: 600px) {
+      .hero h1 {
+        font-size: 2rem;
+      }
+      .hero h2 {
+        font-size: 1.2rem;
+      }
+      .section-title {
+        font-size: 1.8rem;
+      }
+    }
+
+    .highlight {
+      background: #f3e1ce;
+      padding: 0.2rem 0.5rem;
+      border-radius: 12px;
+      font-weight: 500;
+    }
+
+    /* 财务快速卡片 */
+    .finance-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.2rem;
+      justify-content: center;
+      background: #f9e6d2;
+      border-radius: 30px;
+      padding: 1.8rem;
+      margin: 2rem 0;
+    }
+    .finance-item {
+      min-width: 140px;
+      background: #b6713b;
+      color: white;
+      padding: 1rem;
+      border-radius: 28px 8px;
+      text-align: center;
+    }
+    .finance-item small {
+      display: block;
+      font-size: 0.8rem;
+      opacity: 0.9;
+    }
+    .finance-item h3 {
+      font-size: 1.8rem;
+      margin: 0.2rem 0;
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+  
+  <!-- 主视觉 -->
+  <div class="hero">
+    <h1>評水相逢</h1>
+    <h2>盛京评韵伴旅行</h2>
+    <div class="subhead">
+      <i class="fas fa-dragon"></i> 国家级非遗 · 沈阳评剧 <i class="fas fa-feather"></i>
+    </div>
+    <p style="margin-top:1rem; max-width:700px; margin-left:auto; margin-right:auto; background:#fff1dd; padding:1rem; border-radius:60px;">
+      “韩·花·筱”三大流派 · 评剧半壁江山
+    </p>
+  </div>
+
+  <!-- 沈阳评剧简介 -->
+  <div>
+    <div class="section-title"><i class="fas fa-landmark"></i> 沈阳评剧 · 非遗瑰宝</div>
+    <div class="card" style="background:#fcf3e7;">
+      <p style="font-size:1.2rem; margin-bottom:1rem;">沈阳评剧以<span class="highlight">韩少云、花淑兰、筱俊亭</span>三大流派为核心，艺术特色鲜明，被誉为“评剧半壁江山”。唱腔吐字清晰、行腔流畅，既有口语化的亲切，又有以情带声的感染力。</p>
+      <p>国家“十四五”文旅规划推动非遗与旅游深度融合。沈阳评剧作为东北文化标识，通过<strong>文创衍生+线上教学+线下体验</strong>三位一体模式，让非遗活在当下。</p>
+      <div style="display:flex; flex-wrap:wrap; margin-top:1.2rem; gap:0.5rem;">
+        <span class="liupai-badge"><i class="fas fa-microphone-alt"></i> 韩派 · 刚柔并济</span>
+        <span class="liupai-badge"><i class="fas fa-music"></i> 花派 · 华丽跳荡</span>
+        <span class="liupai-badge"><i class="fas fa-drum"></i> 筱派 · 浑厚醇朴</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 经典剧目版块 (嵌入B站视频) -->
+  <div>
+    <div class="section-title"><i class="fas fa-ticket-alt"></i> 经典剧目 · 视频赏析</div>
+    <div class="grid-3">
+      
+      <!-- 1. 花为媒 -->
+      <div class="card">
+        <div class="video-wrapper">
+          <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=291795059&bvid=BV1wf4y157qs&cid=374137667&p=1" scrolling="no" framespacing="0" allowfullscreen="true"></iframe>
+        </div>
+        <h3 style="font-size:1.6rem; color:#7a3b2e;">《花为媒》</h3>
+        <p><strong>流派：</strong>花派代表剧目 · 张五可“报花名”家喻户晓</p>
+        <p>青春男女以花为媒，喜剧色彩浓郁，唱腔华丽多变，是评剧流传最广的经典之一。</p>
+      </div>
+
+      <!-- 2. 小女婿 -->
+      <div class="card">
+        <div class="video-wrapper">
+          <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=316963402&bvid=BV1fP411s7By&cid=1224145345&p=1" scrolling="no" framespacing="0" allowfullscreen="true"></iframe>
+        </div>
+        <h3 style="font-size:1.6rem; color:#7a3b2e;">《小女婿》</h3>
+        <p><strong>流派：</strong>韩派奠基之作 · 韩少云代表作</p>
+        <p>讲述新中国成立初期农村青年争取婚姻自由的故事，“鸟入林”唱段深入人心，质朴真挚。</p>
+      </div>
+
+      <!-- 3. 杨八姐游春 -->
+      <div class="card">
+        <div class="video-wrapper">
+          <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=113145846696330&bvid=BV1BT4oeUEMB&cid=25880693509&p=1" scrolling="no" framespacing="0" allowfullscreen="true"></iframe>
+        </div>
+        <h3 style="font-size:1.6rem; color:#7a3b2e;">《杨八姐游春》</h3>
+        <p><strong>流派：</strong>筱派经典 · 老旦唱腔</p>
+        <p>杨八姐春日游春，巧遇宋王，佘太君抗旨拒婚。筱俊亭塑造的佘太君刚正不阿，唱腔苍劲醇厚。</p>
+      </div>
+
+      <!-- 4. 打金枝 -->
+      <div class="card">
+        <div class="video-wrapper">
+          <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=518627478&bvid=BV1gg411n7ut&cid=919934155&p=1" scrolling="no" framespacing="0" allowfullscreen="true"></iframe>
+        </div>
+        <h3 style="font-size:1.6rem; color:#7a3b2e;">《打金枝》</h3>
+        <p><strong>流派：</strong>花、筱等均擅演 · 皇家恩怨</p>
+        <p>唐代宗之女与驸马郭暧的趣事，其中“劝驸马”一段广为流传，多个流派皆有演绎。</p>
+      </div>
+    </div>
+    <p style="text-align:right; margin-top:0;">※ 视频由B站提供，点击播放可直接欣赏经典唱段。</p>
+  </div>
+
+  <hr class="divider">
+
+  <!-- 产品与服务：文创+课程+体验 -->
+  <div>
+    <div class="section-title"><i class="fas fa-puzzle-piece"></i> 评水相逢 · 三位一体</div>
+    <div class="grid-3">
+      <div class="card" style="text-align:center;">
+        <div class="feature-icon"><i class="fas fa-gem"></i></div>
+        <h3>评剧文创</h3>
+        <p>潮流盲盒、徽章、丝巾，融合戏服纹样；实用笔记本、书签。每件文创附带二维码，扫码聆听角色故事。</p>
+        <p style="color:#a44a2f;"><i class="fas fa-tag"></i> 9.9元起 · 把非遗带回家</p>
+      </div>
+      <div class="card" style="text-align:center;">
+        <div class="feature-icon"><i class="fas fa-laptop-code"></i></div>
+        <h3>线上课程</h3>
+        <p>韩、花、筱传人亲授，单支唱段拆解/系统套餐。零基础入门课19.9元，精讲课49.9元，社群打卡互动。</p>
+        <p style="color:#a44a2f;"><i class="fas fa-video"></i> 碎片化学习 · 跟练片段</p>
+      </div>
+      <div class="card" style="text-align:center;">
+        <div class="feature-icon"><i class="fas fa-city"></i></div>
+        <h3>线下体验·沈阳故宫</h3>
+        <p>“评剧妆造体验站”专业化妆师打造戏妆，穿戴戏服拍照。套票：故宫门票+妆造+评剧演出票=198元。</p>
+        <p style="color:#a44a2f;"><i class="fas fa-ticket"></i> 沉浸式游盛京</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- 市场亮点条 -->
+  <div style="background:#e7d5bf; border-radius:30px; padding:1.8rem; margin:2rem 0;">
+    <div style="display:flex; flex-wrap:wrap; gap:1.5rem; justify-content:space-around;">
+      <div><i class="fas fa-check-circle" style="color:#9e2a2b;"></i> <strong>独家资源：</strong>沈阳评剧院·故宫双IP</div>
+      <div><i class="fas fa-check-circle" style="color:#9e2a2b;"></i> <strong>闭环模式：</strong>线上引流→线下体验→电商转化</div>
+      <div><i class="fas fa-check-circle" style="color:#9e2a2b;"></i> <strong>国潮风口：</strong>Z世代非遗消费年增20%</div>
+    </div>
+  </div>
+
+  <!-- 财务简表 (根据商业计划书) -->
+  <div class="finance-row">
+    <div class="finance-item">
+      <small>启动资金</small>
+      <h3>50万</h3>
+      <small>银行+自筹+政策</small>
+    </div>
+    <div class="finance-item">
+      <small>预计年营收(2026)</small>
+      <h3>135万</h3>
+      <small>文创·课程·套票</small>
+    </div>
+    <div class="finance-item">
+      <small>净现值(NPV)</small>
+      <h3>≈180万</h3>
+      <small>折现率15%</small>
+    </div>
+    <div class="finance-item">
+      <small>回收期</small>
+      <h3>1.4年</h3>
+      <small>动态静态</small>
+    </div>
+  </div>
+
+  <!-- 项目进展简述 -->
+  <div style="margin: 2rem 0 1rem; background: #fff5ec; padding: 1rem 2rem; border-radius: 60px 12px;">
+    <i class="fas fa-calendar-alt" style="color:#b0452c;"></i> <strong>项目进展：</strong> 2026年1月团队成立 · 文创设计打样完成 · 传承人课程录制中 · 已与沈阳故宫达成初步合作意向
+  </div>
+
+  <!-- 结语 -->
+  <div style="text-align:center; margin: 2rem 0; font-size:1.3rem; background: #fff1e0; padding: 1.5rem; border-radius: 60px 12px;">
+    <i class="fas fa-feather" style="color:#b0452c;"></i> 让传统评剧走出剧场，融入旅途，唤醒非遗活力。<br>
+    <span style="font-size:2rem; display:inline-block; margin:0.5rem;"></span><br>
+    <strong>微光汇聚，可照星河；文化赋能，方行致远。</strong>
+  </div>
+
+  <footer>
+    <p>评水相逢 · 盛京评韵伴旅行 — 国家级非遗沈阳评剧创新项目</p>
+    <p>商业计划书 & 评剧资料 © 2026 项目组 | 视频嵌入来自B站公开资源</p>
+  </footer>
+</div>
+
+</body>
+</html>
